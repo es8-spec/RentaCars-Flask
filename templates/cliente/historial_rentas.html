@@ -1,0 +1,40 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Historial de Rentas{% endblock %}
+{% block contenido %}
+<h3 class="mb-4">Mis Rentas</h3>
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Imagen</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Placa</th>
+            <th>Fecha</th>
+            <th>Pagado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for renta in rentas %}
+        <tr>
+            <td>{{ renta[0] }}</td>
+            <td>
+                <img src="{{ url_for('static', filename='subidos/vehiculos/' ~ renta[4]) }}" width="120">
+            </td>
+            <td>{{ renta[1] }}</td>
+            <td>{{ renta[2] }}</td>
+            <td>{{ renta[3] }}</td>
+            <td>{{ renta[5] }}</td>
+            <td>
+                {% if renta[6] == 'Si' %}
+                <span class="badge bg-success">Pagado</span>
+                {% else %}
+                <span class="badge bg-danger">Pendiente</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('cliente.dashboard') }}" class="btn btn-secondary">Regresar</a>
+{% endblock %}

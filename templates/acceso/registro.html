@@ -1,0 +1,41 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Registro{% endblock %}
+{% block contenido %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow mb-5">
+            <div class="card-header bg-success text-white">
+                <h4 class="text-center">Registro de Cliente</h4>
+            </div>
+            <div class="card-body">
+                {% if mensaje %}
+                <div class="alert alert-{{ tipo_mensaje }}">{{ mensaje }}</div>
+                {% endif %}
+                <form method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="cedula" id="floatingCedula" class="form-control" placeholder="Cédula" maxlength="10" required>
+                        <label for="floatingCedula">Cédula</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="nombres" id="floatingNombres" class="form-control" placeholder="Nombres" required>
+                        <label for="floatingNombres">Nombres</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="apellidos" id="floatingApellidos" class="form-control" placeholder="Apellidos" required>
+                        <label for="floatingApellidos">Apellidos</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="telefono" id="floatingTelefono" class="form-control" placeholder="Teléfono" required>
+                        <label for="floatingTelefono">Teléfono</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" id="floatingPassword" class="form-control" placeholder="Contraseña" required>
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <button class="btn btn-success w-100">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

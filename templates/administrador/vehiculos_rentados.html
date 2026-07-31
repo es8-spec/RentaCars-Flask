@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Vehículos Rentados{% endblock %}
+{% block contenido %}
+<h3 class="mb-4">Vehículos Rentados</h3>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Cédula</th>
+            <th>Cliente</th>
+            <th>Vehículo</th>
+            <th>Placa</th>
+            <th>Fecha</th>
+            <th>Pagado</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for renta in rentas %}
+        <tr>
+            <td>{{ renta[0] }}</td>
+            <td>{{ renta[1] }}</td>
+            <td>{{ renta[2] }} {{ renta[3] }}</td>
+            <td>{{ renta[4] }} {{ renta[5] }}</td>
+            <td>{{ renta[6] }}</td>
+            <td>{{ renta[7] }}</td>
+            <td>
+                {% if renta[8] == 'Si' %}
+                <span class="badge bg-success">Sí</span>
+                {% else %}
+                <span class="badge bg-danger">No</span>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('administrador.ver_comprobante', id=renta[0]) }}" class="btn btn-primary btn-sm">Ver comprobante</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('administrador.dashboard') }}" class="btn btn-secondary">Regresar</a>
+{% endblock %}

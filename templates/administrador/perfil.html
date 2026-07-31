@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Perfil{% endblock %}
+{% block contenido %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4>Perfil del Administrador</h4>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ session['nombre'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Rol</th>
+                        <td>{{ session['rol'] }}</td>
+                    </tr>
+                </table>
+                <a href="{{ url_for('administrador.dashboard') }}" class="btn btn-secondary">Regresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

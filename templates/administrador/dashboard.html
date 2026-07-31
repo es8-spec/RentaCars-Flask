@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Administrador{% endblock %}
+{% block contenido %}
+<div class="card shadow">
+    <div class="card-header bg-dark text-white">
+        <h3 class="text-center">Panel del Administrador</h3>
+    </div>
+    <div class="card-body">
+        <h5>Bienvenido <strong>{{ session['nombre'] }}</strong></h5>
+        <p>Rol: <strong>{{ session['rol'] }}</strong></p>
+        <hr>
+        <div class="d-grid gap-2">
+            <a href="{{ url_for('administrador.perfil') }}" class="btn btn-primary">Perfil</a>
+            <a href="{{ url_for('administrador.agregar_vehiculo') }}" class="btn btn-success">Registrar Vehículo</a>
+            <a href="{{ url_for('administrador.listar_vehiculos') }}" class="btn btn-info">Listar Vehículos</a>
+            <a href="{{ url_for('administrador.vehiculos_rentados') }}" class="btn btn-warning">Vehículos Rentados</a>
+            <a href="{{ url_for('acceso.cerrar_sesion') }}" class="btn btn-danger">Cerrar sesión</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

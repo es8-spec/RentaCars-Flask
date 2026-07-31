@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}RentaCars - Tu mejor opción{% endblock %}
+{% block contenido %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Sistema de Renta de Vehículos</h3>
+            </div>
+            <div class="card-body text-center">
+                <h5>Bienvenido</h5>
+                <div class="alert alert-success">
+                    Usuarios registrados: <strong>{{ total_usuarios }}</strong>
+                </div>
+                <a href="{{ url_for('acceso.iniciar_sesion') }}" class="btn btn-primary">Iniciar sesión</a>
+                <a href="{{ url_for('acceso.registro') }}" class="btn btn-success">Registrarse</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

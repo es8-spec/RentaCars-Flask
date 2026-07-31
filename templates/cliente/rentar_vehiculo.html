@@ -1,0 +1,36 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Rentar Vehículo{% endblock %}
+{% block contenido %}
+<div class="row">
+    <div class="col-md-5">
+        <img src="{{ url_for('static', filename='subidos/vehiculos/' ~ vehiculo[6]) }}" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-7">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4>Rentar Vehículo</h4>
+            </div>
+            <div class="card-body">
+                {% if mensaje %}
+                <div class="alert alert-{{ tipo_mensaje }}">{{ mensaje }}</div>
+                {% endif %}
+                <p><b>Marca:</b> {{ vehiculo[1] }}</p>
+                <p><b>Modelo:</b> {{ vehiculo[2] }}</p>
+                <p><b>Precio por día:</b> $ {{ vehiculo[5] }}</p>
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label>Fecha de renta</label>
+                        <input type="date" name="fecha_renta" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Copia de cédula</label>
+                        <input type="file" name="cedula" class="form-control" required>
+                    </div>
+                    <button class="btn btn-success">Confirmar renta</button>
+                    <a href="{{ url_for('cliente.ver_vehiculos') }}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

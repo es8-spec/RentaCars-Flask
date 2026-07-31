@@ -1,0 +1,33 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Inicio de sesión{% endblock %}
+{% block contenido %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="text-center">Ingreso al sistema</h4>
+            </div>
+            <div class="card-body">
+                {% if mensaje %}
+                <div class="alert alert-danger">{{ mensaje }}</div>
+                {% endif %}
+                <form method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="cedula" id="floatingCedula" class="form-control" placeholder="Cédula" required>
+                        <label for="floatingCedula">Cédula</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" id="floatingPassword" class="form-control" placeholder="Contraseña" required>
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <button class="btn btn-primary w-100">Ingresar</button>
+                </form>
+                <hr>
+                <div class="text-center">
+                    <a href="{{ url_for('acceso.registro') }}">Crear cuenta</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

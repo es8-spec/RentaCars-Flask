@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Vehículos Disponibles{% endblock %}
+{% block contenido %}
+<h2 class="mb-4 text-center">Vehículos Disponibles</h2>
+<div class="row">
+    {% for vehiculo in vehiculos %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow h-100">
+            <img src="{{ url_for('static', filename='subidos/vehiculos/' ~ vehiculo[6]) }}" class="card-img-top" height="220">
+            <div class="card-body">
+                <h5>{{ vehiculo[1] }} {{ vehiculo[2] }}</h5>
+                <p><strong>Año:</strong> {{ vehiculo[3] }}</p>
+                <p><strong>Placa:</strong> {{ vehiculo[4] }}</p>
+                <p><strong>Precio por día:</strong> $ {{ vehiculo[5] }}</p>
+                <a href="{{ url_for('cliente.rentar_vehiculo', id=vehiculo[0]) }}" class="btn btn-primary w-100">Rentar</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<a href="{{ url_for('cliente.dashboard') }}" class="btn btn-secondary">Regresar</a>
+{% endblock %}

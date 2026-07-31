@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+{% block titulo %}Cliente{% endblock %}
+{% block contenido %}
+<div class="card shadow">
+    <div class="card-header bg-success text-white">
+        <h3 class="text-center">Panel del Cliente</h3>
+    </div>
+    <div class="card-body">
+        <h5>Bienvenido <strong>{{ session['nombre'] }}</strong></h5>
+        <p>Rol: <strong>{{ session['rol'] }}</strong></p>
+        <hr>
+        <div class="d-grid gap-2">
+            <a href="{{ url_for('cliente.perfil') }}" class="btn btn-primary">Perfil</a>
+            <a href="{{ url_for('cliente.ver_vehiculos') }}" class="btn btn-success">Ver Vehículos</a>
+            <a href="{{ url_for('cliente.historial_rentas') }}" class="btn btn-warning">Historial de Rentas</a>
+            <a href="{{ url_for('acceso.cerrar_sesion') }}" class="btn btn-danger">Cerrar Sesión</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
